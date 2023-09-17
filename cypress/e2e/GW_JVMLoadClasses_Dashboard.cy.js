@@ -3,10 +3,12 @@
 
 describe('JVM Load Classes Dashboard Automation', ()=>{
 
+    const apiURL = "https://prometheus.axp.com/api/v1/query?query=sum(jvm_classes_loaded_total{job=~'.*'})";
+
     it('Status Code validation in JVM Load Classes Dashboard', () =>{
         cy.request({
             method: 'GET',
-            url: "https://prometheus.axp.com/api/v1/query?query=sum(jvm_classes_loaded_total{job=~'.*'})"
+            url: apiURL
         }).then((promRes) =>{
             expect(promRes.status).to.eq(200);
         })
@@ -15,7 +17,7 @@ describe('JVM Load Classes Dashboard Automation', ()=>{
     it('Array length validation in JVM Load Classes Dashboard', () =>{
         cy.request({
             method: 'GET',
-            url: "https://prometheus.axp.com/api/v1/query?query=sum(jvm_classes_loaded_total{job=~'.*'})"
+            url: apiURL
         }).then((promRes) =>{
             expect(promRes.status).to.eq(200);
             const values = promRes.body.data.result[0].value;
@@ -26,7 +28,7 @@ describe('JVM Load Classes Dashboard Automation', ()=>{
     it('Array element value validation in JVM Load Classes Dashboard', () =>{
         cy.request({
             method: 'GET',
-            url: "https://prometheus.axp.com/api/v1/query?query=sum(jvm_classes_loaded_total{job=~'.*'})"
+            url: apiURL
         }).then((promRes) =>{
             expect(promRes.status).to.eq(200);
             const values = promRes.body.data.result[0].value;
