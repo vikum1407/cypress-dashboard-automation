@@ -7,6 +7,10 @@
 
    * Cypress Installation - https://docs.cypress.io/guides/getting-started/installing-cypress
 
+## Load the environment variables
+
+   * npm install --save-dev dotenv
+
 ## Description and File Structure
 
    * Main test cases written on the 'e2e' folder.
