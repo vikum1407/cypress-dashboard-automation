@@ -42,4 +42,50 @@ describe('Traffic By API Dashboard Automation', ()=>{
             });
         });       
     });
+
+    it('Validate Gateway Traffic Dashboard data with Main APIs', () =>{
+        cy.get('@apiResponse').then((response) => {
+            const results = response.body.data.result;
+        
+            results.forEach((result) => {
+              const apiNames = result.metric.api_name;
+
+              if(apiNames === 'location'){
+                const values = result.value;
+                values.forEach((value) => {
+                    // Convert the value to a number (assuming it's a string)
+                    const numericValue = parseFloat(value);
+    
+                    expect(numericValue).to.be.gte(0);
+                  });
+              } else if(apiNames === 'smsmessaging'){
+                const values = result.value;
+                values.forEach((value) => {
+                    // Convert the value to a number (assuming it's a string)
+                    const numericValue = parseFloat(value);
+    
+                    expect(numericValue).to.be.gte(0);
+                  });
+              } else if(apiNames === 'ussd'){
+                const values = result.value;
+                values.forEach((value) => {
+                    // Convert the value to a number (assuming it's a string)
+                    const numericValue = parseFloat(value);
+    
+                    expect(numericValue).to.be.gte(0);
+                  });
+              } else if(apiNames === 'payment'){
+                const values = result.value;
+                values.forEach((value) => {
+                    // Convert the value to a number (assuming it's a string)
+                    const numericValue = parseFloat(value);
+    
+                    expect(numericValue).to.be.gte(0);
+                  });
+              } else{
+                console.log("No location API found!!!")
+              }
+            });
+        });       
+    });
 })
