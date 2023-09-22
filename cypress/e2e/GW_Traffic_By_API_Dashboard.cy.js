@@ -50,41 +50,23 @@ describe('Traffic By API Dashboard Automation', ()=>{
             results.forEach((result) => {
               const apiNames = result.metric.api_name;
 
-              if(apiNames === 'location'){
+              const oemAPINames = ['homeland', 'daraz', 'wow', 'primeland']
+
+              if(oemAPINames.includes(apiNames)){
                 const values = result.value;
                 values.forEach((value) => {
-                    // Convert the value to a number (assuming it's a string)
                     const numericValue = parseFloat(value);
-    
                     expect(numericValue).to.be.gte(0);
-                  });
-              } else if(apiNames === 'smsmessaging'){
+                });
+                } else if(!oemAPINames.includes(apiNames)){
                 const values = result.value;
                 values.forEach((value) => {
-                    // Convert the value to a number (assuming it's a string)
                     const numericValue = parseFloat(value);
-    
                     expect(numericValue).to.be.gte(0);
-                  });
-              } else if(apiNames === 'ussd'){
-                const values = result.value;
-                values.forEach((value) => {
-                    // Convert the value to a number (assuming it's a string)
-                    const numericValue = parseFloat(value);
-    
-                    expect(numericValue).to.be.gte(0);
-                  });
-              } else if(apiNames === 'payment'){
-                const values = result.value;
-                values.forEach((value) => {
-                    // Convert the value to a number (assuming it's a string)
-                    const numericValue = parseFloat(value);
-    
-                    expect(numericValue).to.be.gte(0);
-                  });
-              } else{
-                console.log("No location API found!!!")
-              }
+                });
+                }else {
+                throw new Error(`Not found: ${apiNames}`);
+                }
             });
         });       
     });
