@@ -14,9 +14,10 @@ describe('JVM None Heap Dashboard Automation', () =>{
     });
 
     it('Status Code validation in JVM None Heap Dashboard', () =>{
-        cy.get('@apiResponse').should((response) =>{
+        /* cy.get('@apiResponse').should((response) =>{
             expect(response.status).to.eq(200);
-        })
+        }) */
+        cy.validateStatusCode();
     });
 
     it('Array length validation in JVM None Heap Dashboard', ()=>{

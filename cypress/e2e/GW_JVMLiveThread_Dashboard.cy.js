@@ -14,9 +14,10 @@ describe('JVM Live Thread Dashboard Automation', () =>{
     })
 
     it('Status Code validation in JVM Live Thread Dashboard', () =>{
-        cy.get('@apiResponse').should((response) =>{
+        /* cy.get('@apiResponse').should((response) =>{
             expect(response.status).to.eq(200);
-        })
+        }) */
+        cy.validateStatusCode();
     });
 
     it('Array length validation in JVM Live Thread Dashboard', () =>{

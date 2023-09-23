@@ -14,9 +14,10 @@ describe('JVM Heap Memory Dashboard Automation', ()=>{
     })
 
     it('Status Code validation in JVM Heap Memory Dashboard',()=>{
-        cy.get('@apiResponse').then((response) =>{
+        /* cy.get('@apiResponse').then((response) =>{
             expect(response.status).to.equal(200);
-        })
+        }) */
+        cy.validateStatusCode();
     });
 
     it('Array length validation in JVM Heap Memory Dashboard', () =>{

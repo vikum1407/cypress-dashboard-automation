@@ -15,9 +15,10 @@ describe('JVM Load Classes Dashboard Automation', ()=>{
     })
 
     it('Status Code validation in JVM Load Classes Dashboard', () =>{
-        cy.get('@apiResponse').then((response) => {
+        /* cy.get('@apiResponse').then((response) => {
             expect(response.status).to.equal(200);
-          });
+        }); */
+        cy.validateStatusCode();
     });
 
     it('Array length validation in JVM Load Classes Dashboard', () =>{

@@ -14,9 +14,10 @@ describe('Traffic By API Dashboard Automation', ()=>{
     })
 
     it('Status code validation in Traffic By API Dashboard', ()=>{
-        cy.get('@apiResponse').should((response) =>{
+        /* cy.get('@apiResponse').should((response) =>{
             expect(response.status).to.eq(200);
-        })
+        }) */
+        cy.validateStatusCode();
     });
 
     it('Array length validation in Traffic By API Dashboard', () =>{
